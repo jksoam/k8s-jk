@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.AddTask.deploymentName }}
+spec:
+  replicas: {{ .Values.AddTask.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.AddTask.matchLables }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.AddTask.podLables }}
+    spec:
+      containers:
+      - name: {{ .Values.AddTask.containerName }}
+        image: "{{ .Values.AddTask.image.acrLoginServerName }}/{{ .Values.AddTask.image.imageName }}:{{ .Values.AddTask.image.imageTag }}"
+        ports:
+        - containerPort: {{ .Values.AddTask.containerPort }}

@@ -1,0 +1,18 @@
+AddTask:
+  deploymentName: dev-add
+  replicaCount: 3
+  matchLables: dev-add
+  podLables: dev-add
+  containerName: dev-add-container
+  image:
+    acrLoginServerName: devacrdockndeploy1.azurecr.io
+    imageName: devaddmicro
+    imageTag: 163
+  containerPort: 8000
+
+  serviceName: dev-add-service
+  servicePort: 80
+  serviceType: ClusterIP
+
+  ingressName: dev-add-ingress
+  subdomainName: home
